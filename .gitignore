@@ -1,0 +1,13 @@
+.idea
+bin
+src/golang.org/
+src/github.com/
+src/gopkg.in/
+pkg
+*.swp
+tmp/
+samples/
+*.orig
+*.rej
+*.pb.go
+
