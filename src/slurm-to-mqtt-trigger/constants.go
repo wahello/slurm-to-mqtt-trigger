@@ -29,7 +29,7 @@ const helpText = `Usage: %s [--help] [--version] --mode=job|node --down|--draine
 
   Options for job mode, only one option can be used:
     --down      Node entered DOWN state
-    --drained   Node entered DRAIN state
+    --drained   Node entered DRAINED state
     --fail      Node entered FAIL state
     --idle      Node was idle for a specified amount of time
     --up        Node returned from UP state
