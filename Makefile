@@ -3,6 +3,7 @@ BINDIR	= $(CURDIR)/bin
 
 depend:
 	env GOPATH=$(GOPATH) go get -u github.com/eclipse/paho.mqtt.golang
+	env GOPATH=$(GOPATH) go get -u github.com/nu7hatch/gouuid
 	env GOPATH=$(GOPATH) go get -u github.com/sirupsen/logrus
 	env GOPATH=$(GOPATH) go get -u gopkg.in/ini.v1
 

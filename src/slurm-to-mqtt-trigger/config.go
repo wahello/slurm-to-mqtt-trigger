@@ -40,6 +40,12 @@ func loadConfiguration(file string) (configuration, error) {
 	result.NodeTopic = strings.TrimSuffix(strings.TrimPrefix(result.NodeTopic, "/"), "/")
 	result.JobTopic = strings.TrimSuffix(strings.TrimPrefix(result.JobTopic, "/"), "/")
 
+	if _url.Scheme == "ssl" || _url.Scheme == "tls" || _url.Scheme == "mqtts" {
+		result.useTLS = true
+	}
+
+	result.qos = byte(result.QoS)
+
 	return result, nil
 }
 
@@ -53,7 +59,7 @@ func validateConfiguration(config configuration) error {
 		return err
 	}
 
-	if _url.Scheme != "tcp" && _url.Scheme != "ssl" {
+	if _url.Scheme != "tcp" && _url.Scheme != "ssl" && _url.Scheme != "tls" && _url.Scheme != "mqtt" && _url.Scheme != "mqtts" {
 		return fmt.Errorf("Invalid scheme in broker URL")
 	}
 
@@ -63,6 +69,10 @@ func validateConfiguration(config configuration) error {
 
 	if config.NodeTopic == "" && config.JobTopic == "" {
 		return fmt.Errorf("Neither node_topic nor job_topic are defined")
+	}
+
+	if config.QoS > 2 {
+		return fmt.Errorf("Invalid QoS value")
 	}
 
 	return nil
