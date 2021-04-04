@@ -5,7 +5,7 @@
 broker = "tcp://localhost:1883"
 
 ; username - User name for authentication
-username = user_name
+user = user_name
 
 ; password - Password for authentication
 password = ItsSoFluffY1mG0nn4Di3!
