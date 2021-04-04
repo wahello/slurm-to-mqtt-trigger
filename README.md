@@ -1,3 +1,7 @@
+**_Note:_** Because I'm running my own servers for several years, main development is done at at https://git.ypbind.de/cgit/slurm-to-mqtt-trigger/
+
+----
+
 # Preface
 `slurm-to-mqtt-trigger` can be installed as a SLURM trigger and send events to a defined MQTT broker.
 
