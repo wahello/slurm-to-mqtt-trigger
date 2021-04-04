@@ -35,7 +35,7 @@ const helpText = `Usage: %s [--help] [--version] --mode=job|node --down|--draine
     --up        Node returned from DOWN state
 
   Options for node mode, only one option can be used:
-    --fini      Job finnished
+    --fini      Job finished
     --time      Job time limit reached
 
 `
