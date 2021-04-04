@@ -1,0 +1,27 @@
+[mqtt]
+; Valid schemes are:
+;  mqtt or tcp - unencrypted connection
+;  mqtts, ssl or tls - encrypted connection
+broker = "tcp://localhost:1883"
+
+; username - User name for authentication
+username = user_name
+
+; password - Password for authentication
+password = ItsSoFluffY1mG0nn4Di3!
+
+; skip SSL verification
+insecure_ssl = false
+
+; path to CA certificate for SSL verification
+ca_cert = /path/to/server/ca.pem
+
+; node_topic - topic base to send node triggers to
+node_topic = site/cluster/slurm/nodes
+
+; job_topic - topic base to send job triggers to
+job_topic = site/cluster/slurm/jobs
+
+; MQTT QoS
+qos = 2
+
