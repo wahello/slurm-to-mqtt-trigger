@@ -1,7 +1,7 @@
 package main
 
 const name = "slurm-to-mqtt-trigger"
-const version = "1.0.0"
+const version = "1.0.1"
 
 const defaultConfigurationFile = "/etc/slurm-to-mqtt-trigger/config.ini"
 

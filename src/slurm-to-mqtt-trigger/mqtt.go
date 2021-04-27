@@ -86,18 +86,24 @@ func mqttPublish(cfg configuration, client mqtt.Client, nodeOrJob string) error 
 		} else if cfg.up {
 			nodeState = "up"
 		}
+
+		nodes := expandSLURMHostlist(nodeOrJob)
 		nodeStateTopic := cfg.NodeTopic + "/state/" + nodeState
-		nodeNodeTopic := cfg.NodeTopic + "/node/" + nodeOrJob
 
-		token := client.Publish(nodeStateTopic, cfg.qos, cfg.retain, nodeOrJob)
-		if token.Wait() && token.Error() != nil {
-			return token.Error()
+		for _, node := range nodes {
+			nodeNodeTopic := cfg.NodeTopic + "/node/" + node
+
+			token := client.Publish(nodeStateTopic, cfg.qos, cfg.retain, node)
+			if token.Wait() && token.Error() != nil {
+				return token.Error()
+			}
+
+			token = client.Publish(nodeNodeTopic, cfg.qos, cfg.retain, nodeState)
+			if token.Wait() && token.Error() != nil {
+				return token.Error()
+			}
 		}
 
-		token = client.Publish(nodeNodeTopic, cfg.qos, cfg.retain, nodeState)
-		if token.Wait() && token.Error() != nil {
-			return token.Error()
-		}
 	} else if cfg.mode == ModeJob {
 		if cfg.fini {
 			jobState = "finished"
