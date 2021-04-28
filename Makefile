@@ -1,14 +1,10 @@
-GOPATH	= $(CURDIR)
 BINDIR	= $(CURDIR)/bin
 
 depend:
-	env GOPATH=$(GOPATH) go get -u github.com/eclipse/paho.mqtt.golang
-	env GOPATH=$(GOPATH) go get -u github.com/nu7hatch/gouuid
-	env GOPATH=$(GOPATH) go get -u github.com/sirupsen/logrus
-	env GOPATH=$(GOPATH) go get -u gopkg.in/ini.v1
+	# handled by go mod
 
 build:
-	env GOPATH=$(GOPATH) go install slurm-to-mqtt-trigger
+	cd $(CURDIR)/src/slurm-to-mqtt-trigger && go get slurm-to-mqtt-trigger/src/slurm-to-mqtt-trigger && go build -o $(CURDIR)/bin/slurm-to-mqtt-trigger
 
 destdirs:
 	mkdir -p -m 0755 $(DESTDIR)/usr/bin
@@ -29,10 +25,6 @@ clean:
 	/bin/rm -f bin/slurm-to-mqtt-trigger
 
 distclean: clean
-	rm -rf src/github.com/
-	rm -rf src/golang.org/
-	rm -rf src/gopkg.in/
-	rm -rf pkg/
 
 uninstall:
 	/bin/rm -f $(DESTDIR)/usr/bin
