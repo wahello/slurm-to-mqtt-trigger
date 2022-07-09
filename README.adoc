@@ -1,5 +1,6 @@
-= slurm-to-mqtt-trigger
+= slurm-to-mqtt-trigger - SLURM trigger that will send it's event to MQTT
 :stylesheet: asciidoc.css
+:toc: left
 
 == Repositories
 
@@ -26,14 +27,14 @@ This tool is implemented in Go so, obviously, a Go compiler is required. Require
 |*Option* |*Description*
 |`--help` |Show help text
 |`--mode=job|node` |Trigger mode
-| |`job` - This programm will be called from job related SLURM triggers
-| |`node` - This programm will be called from node related SLURM triggers
+| |`job` - This program will be called from job related SLURM triggers
+| |`node` - This program will be called from node related SLURM triggers
 | |_Note:_ A mode must be provided, `job` mode and `node` mode are mutually exclusive
 |`--retain` |MQTT message will be retained by the MQTT broker
 |`--version` |Show version information
 |===
 
-The `job` and `node` mode must be the same as for the SLURM trigger, because strigger only passes the nodes or jobs affected by the trigger (see `man strigger` for futher details).
+The `job` and `node` mode must be the same as for the SLURM trigger, because strigger only passes the nodes or jobs affected by the trigger (see `man strigger` for further details).
 
 Options for `job` mode:
 
