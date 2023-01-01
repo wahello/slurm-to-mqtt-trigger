@@ -6,7 +6,7 @@ const version = "1.0.1"
 const defaultConfigurationFile = "/etc/slurm-to-mqtt-trigger/config.ini"
 
 const versionText = `%s version %s
-Copyright (C) 2021 by Andreas Maus <maus@ypbind.de>
+Copyright (C) 2021-2023 by Andreas Maus <maus@ypbind.de>
 This program comes with ABSOLUTELY NO WARRANTY.
 
 pkidb is distributed under the Terms of the GNU General
